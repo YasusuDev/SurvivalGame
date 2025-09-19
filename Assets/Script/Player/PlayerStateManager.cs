@@ -65,35 +65,33 @@ public partial class PlayerStateManager : MonoBehaviour
     {
         if (!playerHit) return;
 
-        // Primeiro verifica árvore
         Vector3 attackPoint = transform.position + transform.forward * 1.5f;
-        Collider[] hits = Physics.OverlapBox(attackPoint, new Vector3(0.5f, 1f, 0.5f));
-        bool hitSomething = false;
+        Vector3 halfExtents = new Vector3(0.5f, 1f, 0.5f);
+
+        Collider[] hits = Physics.OverlapBox(attackPoint, halfExtents, transform.rotation);
 
         foreach (Collider col in hits)
         {
             Tree tree = col.GetComponent<Tree>();
-            if(tree != null)
+            if (tree != null)
             {
                 tree.Hit(transform.position);
-                hitSomething = true;
-                break; // só ataca 1 árvore
+                Debug.Log("Acertou árvore!");
+                playerHit = false;
+                return;
             }
-        }
 
-        // Se não acertou árvore, verifica dummy
-        if(!hitSomething)
-        {
-            RaycastHit hit;
-            if(Physics.Raycast(transform.position + Vector3.up * 1f, transform.forward, out hit, 2f))
+            TrainingDummy dummy = col.GetComponent<TrainingDummy>();
+            if (dummy != null)
             {
-                TrainingDummy dummy = hit.collider.GetComponent<TrainingDummy>();
-                if(dummy != null)
-                    dummy.TakeHit();
+                dummy.TakeHit();
+                Debug.Log("Acertou dummy!");
+                playerHit = false;
+                return;
             }
         }
 
-        playerHit = false; // reseta o hit
+        playerHit = false;
     }
 
     #endregion
