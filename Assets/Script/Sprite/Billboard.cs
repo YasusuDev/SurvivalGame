@@ -2,40 +2,51 @@ using UnityEngine;
 
 public class Billboard : MonoBehaviour
 {
-	[SerializeField] private BillboardType billboardType;
-
+    [Header("Snap Settings")]
+    [SerializeField] private int directions = 8; // número de direções do sprite (8 = 45°)
+    
+    [Header("Rotation Speed")]
+    [SerializeField] private float rotateSpeed = 360f; // graus por segundo
 
     [Header("Lock Rotation")]
-    [SerializeField] private bool lockX;
-    [SerializeField] private bool lockY;
-    [SerializeField] private bool lockZ;
-    
+    [SerializeField] private bool lockX = false;
+    [SerializeField] private bool lockY = false;
+    [SerializeField] private bool lockZ = false;
+
     private Vector3 originalRotation;
-    public enum BillboardType { LookAtCamera, CameraForward };
+    private Quaternion targetRotation;
 
     private void Awake()
     {
         originalRotation = transform.rotation.eulerAngles;
+        targetRotation = transform.rotation;
     }
-    
-    void LateUpdate()
-    {
-        switch (billboardType)
-        {
-            case BillboardType.LookAtCamera:
-                transform.LookAt(Camera.main.transform.position, Vector3.up);
-                break;
-            case BillboardType.CameraForward:
-                transform.forward = Camera.main.transform.position;
-                break;
-            default: 
-                break;
-        }
 
-        Vector3 rotation = transform.rotation.eulerAngles;
-        if (lockX) { rotation.x = originalRotation.x; }
-        if (lockY) { rotation.y = originalRotation.y; }
-        if (lockZ) { rotation.z = originalRotation.z; }
-        transform.rotation = Quaternion.Euler(rotation);
+    private void LateUpdate()
+    {
+        if (Camera.main == null) return;
+
+        // pega a rotação Y da câmera
+        float camY = Camera.main.transform.eulerAngles.y;
+
+        // calcula ângulo “snap” baseado nas direções
+        float stepAngle = 360f / directions;
+        float snappedY = Mathf.Round(camY / stepAngle) * stepAngle;
+
+        // monta a rotação alvo
+        Vector3 newRotation = new Vector3(
+            lockX ? originalRotation.x : 0f,
+            lockY ? originalRotation.y : snappedY,
+            lockZ ? originalRotation.z : 0f
+        );
+
+        targetRotation = Quaternion.Euler(newRotation);
+
+        // aplica rotação suave
+        transform.rotation = Quaternion.RotateTowards(
+            transform.rotation,
+            targetRotation,
+            rotateSpeed * Time.deltaTime
+        );
     }
 }

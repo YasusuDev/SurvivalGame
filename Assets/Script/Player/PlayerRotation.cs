@@ -4,8 +4,9 @@ using System.Collections;
 public class PlayerMovement : MonoBehaviour
 {
     public float rotationSpeed = 180f; // graus por segundo
+    public Vector3 movement;
     private Coroutine rotateCoroutine;
-
+    
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
