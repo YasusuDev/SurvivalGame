@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    [SerializeField] private List<InventorySlot> slots = new();
+    [SerializeField] private List<InventorySlotStructure> slots = new();
     [SerializeField] private ItemData currentEquippedItem;
     
     public void AddItem(ItemData itemData, int amount = 1)
@@ -16,11 +16,11 @@ public class Inventory : MonoBehaviour
             int added = slot.AddQuantity(amount);
             int leftover = amount - added;
             if (leftover > 0)
-                slots.Add(new InventorySlot(itemData, leftover));
+                slots.Add(new InventorySlotStructure(itemData, leftover));
         }
         else
         {
-            slots.Add(new InventorySlot(itemData, amount));
+            slots.Add(new InventorySlotStructure(itemData, amount));
         }
     }
     

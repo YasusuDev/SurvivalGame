@@ -5,7 +5,14 @@ public class ItemData : ScriptableObject
 {
     public string itemName;
     public string itemDescription;
+    public ItemType itemType;
     public int maxStackSize;
     public Sprite icon;
     public GameObject worldPrefab;
+}
+
+public enum ItemType
+{
+    Tool,
+    Resource
 }
