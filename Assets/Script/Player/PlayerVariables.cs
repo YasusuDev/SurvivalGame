@@ -19,4 +19,6 @@ public partial class PlayerStateManager
     public float cameraFollowSpeed;
     public float CameraAngle;
     public Vector3 _gravityVector;
+    
+    public GameObject overlappedObject;
 }

@@ -24,4 +24,10 @@ public partial class PlayerStateManager
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
             playerHit = true;
     }
+
+    private void OnInteract(InputValue value)
+    {
+        Debug.Log("Tentando Interagir");
+        TryInteract();
+    }
 }

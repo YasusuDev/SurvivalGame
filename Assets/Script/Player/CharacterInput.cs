@@ -118,6 +118,15 @@ public partial class @CharacterInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""098df338-54c7-4e00-9378-0b510cb95bb0"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=1)"",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -219,6 +228,28 @@ public partial class @CharacterInput: IInputActionCollection2, IDisposable
                     ""action"": ""Hit"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""19ce41e3-673d-4de9-bbc7-19d66db5bd79"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e47e9566-9c68-4e9a-800b-ad84feae31db"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -230,6 +261,7 @@ public partial class @CharacterInput: IInputActionCollection2, IDisposable
         m_Character_Movement = m_Character.FindAction("Movement", throwIfNotFound: true);
         m_Character_Rotation = m_Character.FindAction("Rotation", throwIfNotFound: true);
         m_Character_Hit = m_Character.FindAction("Hit", throwIfNotFound: true);
+        m_Character_Interact = m_Character.FindAction("Interact", throwIfNotFound: true);
     }
 
     ~@CharacterInput()
@@ -313,6 +345,7 @@ public partial class @CharacterInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Character_Movement;
     private readonly InputAction m_Character_Rotation;
     private readonly InputAction m_Character_Hit;
+    private readonly InputAction m_Character_Interact;
     /// <summary>
     /// Provides access to input actions defined in input action map "Character".
     /// </summary>
@@ -336,6 +369,10 @@ public partial class @CharacterInput: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Character/Hit".
         /// </summary>
         public InputAction @Hit => m_Wrapper.m_Character_Hit;
+        /// <summary>
+        /// Provides access to the underlying input action "Character/Interact".
+        /// </summary>
+        public InputAction @Interact => m_Wrapper.m_Character_Interact;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -371,6 +408,9 @@ public partial class @CharacterInput: IInputActionCollection2, IDisposable
             @Hit.started += instance.OnHit;
             @Hit.performed += instance.OnHit;
             @Hit.canceled += instance.OnHit;
+            @Interact.started += instance.OnInteract;
+            @Interact.performed += instance.OnInteract;
+            @Interact.canceled += instance.OnInteract;
         }
 
         /// <summary>
@@ -391,6 +431,9 @@ public partial class @CharacterInput: IInputActionCollection2, IDisposable
             @Hit.started -= instance.OnHit;
             @Hit.performed -= instance.OnHit;
             @Hit.canceled -= instance.OnHit;
+            @Interact.started -= instance.OnInteract;
+            @Interact.performed -= instance.OnInteract;
+            @Interact.canceled -= instance.OnInteract;
         }
 
         /// <summary>
@@ -452,5 +495,12 @@ public partial class @CharacterInput: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnHit(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Interact" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnInteract(InputAction.CallbackContext context);
     }
 }

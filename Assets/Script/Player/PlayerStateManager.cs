@@ -1,4 +1,4 @@
-using Unity.Mathematics;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -51,7 +51,8 @@ public partial class PlayerStateManager : MonoBehaviour
 
     private void UpdateCameraPosition()
     {
-        if (playerPosition == null) return;
+        if (playerPosition is null) return;
+        
         Vector3 desiredPosition = transform.position + transform.rotation * cameraOffset;
         playerPosition.position = Vector3.Lerp(playerPosition.position, desiredPosition, cameraFollowSpeed * Time.deltaTime);
         playerPosition.LookAt(transform.position + Vector3.up * 2f);
@@ -73,7 +74,7 @@ public partial class PlayerStateManager : MonoBehaviour
         foreach (Collider col in hits)
         {
             Tree tree = col.GetComponent<Tree>();
-            if (tree != null)
+            if (tree is not null)
             {
                 tree.Hit(transform.position);
                 Debug.Log("Acertou árvore!");
@@ -82,7 +83,7 @@ public partial class PlayerStateManager : MonoBehaviour
             }
 
             TrainingDummy dummy = col.GetComponent<TrainingDummy>();
-            if (dummy != null)
+            if (dummy is not null)
             {
                 dummy.TakeHit();
                 Debug.Log("Acertou dummy!");
@@ -94,5 +95,41 @@ public partial class PlayerStateManager : MonoBehaviour
         playerHit = false;
     }
 
+    #endregion
+    
+    #region Interaction
+
+    private void OnTriggerEnter(Collider other)
+    {
+        var interactable = other.GetComponent<IInteractable>();
+        if (interactable != null)
+        {
+            overlappedObject = other.gameObject;
+        }
+    }
+    
+    private void OnTriggerExit(Collider other)
+    {
+        if (overlappedObject == other.gameObject)
+        {
+            overlappedObject = null;
+        }
+    }
+    
+    void TryInteract()
+    {
+        if (overlappedObject is null) { return; }
+        
+        IInteractable interactable = overlappedObject.GetComponent<IInteractable>();
+        
+        if (interactable == null) return;
+        
+        bool isActive = interactable.IsActive();
+        
+        if (isActive)
+        {
+            interactable.Interact(gameObject);
+        }
+    }
     #endregion
 }
