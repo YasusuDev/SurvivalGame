@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class InventorySlot : MonoBehaviour, IDropHandler
+public class InventorySlott : MonoBehaviour, IDropHandler
 {
     private IDropHandler _dropHandlerImplementation;
     public void OnDrop(PointerEventData eventData)
