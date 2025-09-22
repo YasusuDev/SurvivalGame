@@ -97,4 +97,41 @@ public class InventoryManager : MonoBehaviour
         }
         return null;
     }
+    //QUALQUER COISA APAGAR DAQUI PRA BAIXO
+    public int CountItem(Item item)
+    {
+        int total = 0;
+        foreach (var slot in inventorySlots)
+        {
+            InventoryItem inventoryItem = slot.GetComponentInChildren<InventoryItem>();
+            if (inventoryItem != null && inventoryItem.item == item)
+            {
+                total += inventoryItem.count;
+            }
+        }
+        return total;
+    }
+
+    public void RemoveItem(Item item, int amount)
+    {
+        for (int i = 0; i < inventorySlots.Length; i++)
+        {
+            InventoryItem inventoryItem = inventorySlots[i].GetComponentInChildren<InventoryItem>();
+            if (inventoryItem != null && inventoryItem.item == item)
+            {
+                int removeCount = Mathf.Min(amount, inventoryItem.count);
+                inventoryItem.count -= removeCount;
+                amount -= removeCount;
+                inventoryItem.RefreshCount();
+            
+                if (inventoryItem.count <= 0)
+                {
+                    Destroy(inventoryItem.gameObject);
+                }
+
+                if (amount <= 0) break;
+            }
+        }
+    }
+
 }
