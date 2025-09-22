@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d41cc9c78990edc4fa7d5f53ca197d1f, type: 3}
   m_Name: Stick
   m_EditorClassIdentifier: 
+  worldPrefab: {fileID: 461983671507443523, guid: da036908373d84342b1c261731745952, type: 3}
+  handPrefab: {fileID: 2199468273431868762, guid: cc5f9cadf44b2d04d85d45741a53cc85, type: 3}
   type: 0
   actionType: 1
   range: {x: 5, y: 4}

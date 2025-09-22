@@ -7,6 +7,9 @@ using System.Collections.Generic;
 public class Item : ScriptableObject
 {
     
+    [Header("World Prefab")]
+    public GameObject worldPrefab; // usado para dropar no chão ou instanciar na mão
+    public GameObject handPrefab;
     
     [Header("Only Gameplay")]
     public ItemT type;

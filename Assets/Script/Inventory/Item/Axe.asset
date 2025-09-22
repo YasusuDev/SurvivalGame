@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d41cc9c78990edc4fa7d5f53ca197d1f, type: 3}
   m_Name: Axe
   m_EditorClassIdentifier: 
+  worldPrefab: {fileID: 461983671507443523, guid: 74766ef5448eb0a4aa3cef4172b6ba8b, type: 3}
+  handPrefab: {fileID: 2199468273431868762, guid: a9bdc90033ff1674f9d21aefa7e11778, type: 3}
   type: 1
   actionType: 0
   range: {x: 5, y: 4}

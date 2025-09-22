@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d41cc9c78990edc4fa7d5f53ca197d1f, type: 3}
   m_Name: Stone
   m_EditorClassIdentifier: 
+  worldPrefab: {fileID: 461983671507443523, guid: d8d7183fc3da1474d80a05a4031c5f9a, type: 3}
+  handPrefab: {fileID: 2199468273431868762, guid: 2e716ccc81431dd41aa88cf1571423c7, type: 3}
   type: 0
   actionType: 1
   range: {x: 5, y: 4}

@@ -6,7 +6,7 @@ public class Workbench : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player") && Input.GetKeyDown(KeyCode.V))
+        if (other.CompareTag("Player") && Input.GetKeyDown(KeyCode.F))
         {
             Debug.Log("Tentando craftar...");
 
