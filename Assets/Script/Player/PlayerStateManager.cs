@@ -73,15 +73,6 @@ public partial class PlayerStateManager : MonoBehaviour
 
         foreach (Collider col in hits)
         {
-            Tree tree = col.GetComponent<Tree>();
-            if (tree is not null)
-            {
-                tree.Hit(transform.position);
-                Debug.Log("Acertou árvore!");
-                playerHit = false;
-                return;
-            }
-
             TrainingDummy dummy = col.GetComponent<TrainingDummy>();
             if (dummy is not null)
             {
@@ -124,11 +115,11 @@ public partial class PlayerStateManager : MonoBehaviour
         
         if (interactable == null) return;
         
-        bool isActive = interactable.IsActive();
+        bool isActive = interactable.OnIsActive();
         
         if (isActive)
         {
-            interactable.Interact(gameObject);
+            interactable.OnInteract(gameObject);
         }
     }
     #endregion

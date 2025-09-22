@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53372001adf4225429bf6993cde2ea39, type: 3}
   m_Name: AxeCraftRecipe
   m_EditorClassIdentifier: 
-  resultItem: {fileID: 11400000, guid: 56ec12f9e482a814d9f34561947cf075, type: 2}
-  resultAmount: 1
   ingredients:
-  - item: {fileID: 11400000, guid: fd7a05befacdf064aaca9258e92ab429, type: 2}
+  - item: {fileID: 11400000, guid: eea9f3c68972d7f47b72eccf6ef659d5, type: 2}
     amount: 2
-  - item: {fileID: 11400000, guid: f40ca12c7d5b3c946bcd27cbfee8b157, type: 2}
+  - item: {fileID: 11400000, guid: 8a02e2c9e383efb4f9966ce65fdb77c7, type: 2}
     amount: 3
+  result: {fileID: 11400000, guid: 6f1c41454bc92a64a8fc24c392fc4ecf, type: 2}
+  resultAmount: 1

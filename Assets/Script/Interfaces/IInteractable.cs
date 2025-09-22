@@ -2,7 +2,7 @@ using UnityEngine;
 
 public interface IInteractable
 {
-    bool Interact(GameObject interactor);
+    bool OnInteract(GameObject interactor);
     
-    bool IsActive();
+    bool OnIsActive();
 }

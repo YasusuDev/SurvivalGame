@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d41cc9c78990edc4fa7d5f53ca197d1f, type: 3}
-  m_Name: Axe
+  m_Script: {fileID: 11500000, guid: 2875e3e0c5a21d345b0ec07f2f2f305d, type: 3}
+  m_Name: Item_Stone
   m_EditorClassIdentifier: 
-  type: 1
-  actionType: 0
-  range: {x: 5, y: 4}
-  stackable: 0
-  image: {fileID: -5063977840061472721, guid: 5955ca881150f284ab28c7717abb9959, type: 3}
+  itemSprite: {fileID: 7827569111559856574, guid: be8a6808628d06d4382d1329f529b22b, type: 3}
+  itemName: Stone
+  itemDescription: A Stone.
+  isStackable: 1
+  maxStackSize: 16

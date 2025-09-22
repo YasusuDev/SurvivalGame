@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2875e3e0c5a21d345b0ec07f2f2f305d, type: 3}
-  m_Name: RockFragment
+  m_Name: Item_Axe
   m_EditorClassIdentifier: 
-  itemName: RockFragment
-  itemDescription: Maybe you can make an weapon
-  maxStackSize: 8
-  icon: {fileID: 3346735380847249478, guid: d99a4809d548d6e4fae384289bb076ba, type: 3}
-  worldPrefab: {fileID: 9133577150641268424, guid: c3ff2e3d5d9ee864cb63a4426aac6a53, type: 3}
+  itemSprite: {fileID: -5063977840061472721, guid: 5955ca881150f284ab28c7717abb9959, type: 3}
+  itemName: Axe
+  itemDescription: An axe pretty good weapon.
+  itemCategory: 3
+  isStackable: 0
+  maxStackSize: 1

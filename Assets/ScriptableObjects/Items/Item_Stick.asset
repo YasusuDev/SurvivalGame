@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d41cc9c78990edc4fa7d5f53ca197d1f, type: 3}
-  m_Name: Stone
+  m_Script: {fileID: 11500000, guid: 2875e3e0c5a21d345b0ec07f2f2f305d, type: 3}
+  m_Name: Item_Stick
   m_EditorClassIdentifier: 
-  type: 0
-  actionType: 1
-  range: {x: 5, y: 4}
-  stackable: 1
-  image: {fileID: 3346735380847249478, guid: d99a4809d548d6e4fae384289bb076ba, type: 3}
+  itemSprite: {fileID: 7412099395273432013, guid: 19cdf12bd17f6994abe74f561643f7e8, type: 3}
+  itemName: Stick
+  itemDescription: A Stick.
+  isStackable: 1
+  maxStackSize: 16
